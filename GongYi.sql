@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS `Comity` (
   `phone` varchar(20) NOT NULL,
   `weibo` varchar(50) NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY (`cid`)
+  PRIMARY KEY (`cid`),
+  UNIQUE `cname`(`cname`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
@@ -60,11 +61,12 @@ CREATE TABLE IF NOT EXISTS `Activity` (
   `timeEnd` timestamp NOT NULL,
   `address` varchar(100) NOT NULL,
   `cid` int(11) NOT NULL,
-  `manNum` int(11) NOT NULL,
+  `maxNum` int(11) NOT NULL,
   `applyDeadline` date NOT NULL,
   `repeatable` boolean NOT NULL,
   `opt` text NOT NULL,
   PRIMARY KEY (`aid`),
+  UNIQUE `aname`(`aname`),
   FOREIGN KEY (`cid`) REFERENCES Comity(`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -109,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `telephone` char(11)  NOT NULL,
   `selfIntroduction` text NOT NULL,
   PRIMARY KEY (`uid`),
-  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `uname` (`uname`),
   FOREIGN KEY (`sid`) REFERENCES School(`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

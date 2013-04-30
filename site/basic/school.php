@@ -1,7 +1,7 @@
 <?php
-require_once( './tools.php' );
-require_once( './actor.php' );
-
+require_once(dirname(__FILE__)."/tools.php");
+require_once(dirname(__FILE__)."/actor.php");
+	
 class School extends Actor
 {	
 	public function register($parameter)
@@ -14,7 +14,7 @@ class School extends Actor
 			$sname = $parameter['sname'];
 			$password = encrypt_password( $parameter['password'] );
 			$query_str = "insert into School(`sname`, `password`) values('$sname', '$password')";	
-			$ret = $this->mysqli->query( $query_str );
+			$ret['result'] = $this->mysqli->query( $query_str );
 		}
 
 		return $ret;		
@@ -33,6 +33,9 @@ class School extends Actor
 			$result = $this->mysqli->query( $query_str );
 			if( $result ){
 				$ret = $result->fetch_assoc();
+				if( !$ret ){
+					$ret = array();
+				}
 				$result->close();
 			}
 		}
@@ -70,14 +73,14 @@ class School extends Actor
 		$result = $this->mysqli->query( $query_str );
 
 		$ret = array();
-		if( $result->error ){
+		if( !$this->mysqli->error ){
 			while( $row = $result->fetch_assoc() ){
 				$ret[] = $row;
 			}
 			$result->close();
 		}
 		else{
-			die("Error while processing query: ".$result->error);
+			die($this->mysqli->error);
 		}
 	
 		return $ret;
