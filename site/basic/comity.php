@@ -36,7 +36,7 @@
 				$password = $parameter['password'];
 				$password =encrypt_password( $password );
 
-				$query_str = "select cid from Comity where cname='$cname' and password='$password'";
+				$query_str = "select cid as id from Comity where cname='$cname' and password='$password'";
 				$result = $this->mysqli->query( $query_str );
 				$ret = $result->fetch_assoc();
 				if( !$ret ){

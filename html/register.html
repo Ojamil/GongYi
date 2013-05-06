@@ -5,19 +5,29 @@
 	<meta charset='utf-8' />
 </head>
 <body>	
-	<form>
+	<form method="POST" action="../site/register.php">
 		<input type='radio' name='utype' value='user' id='type_u' />
 		<label for="type_u">个人</label>
 		<input type='radio' name='utype' value='comity' id='type_c' />
 		<label for="type_c">组织</label>
 		<input type='radio' name='utype' value='school' id='type_s' />
 		<label for="type_s">学校</label>
+		<input type="submit" />
 	</form>
 
 	<div id="templates" >
 		<div id='template_u'>
 			<label for='uname'>用户名</label><input type='text' name='uname' id='uname'/>
 			<label for='uemail'>电子邮件</label><input type='text' name='email' id='uemail'/>
+			<label for='upassword'>密码</label><input type='password' name='password' id='upassword'/>
+			<label for='genderM'>男</label><input type='radio' name='gender' id='genderM' value="1"/>
+			<label for='genderF'>女</label><input type='radio' name='gender' id='genderF' value="0"/>
+			<label for='birthdate'>生日</label><input type='date' name='birthdate' id='birthdate'/>
+			<select name="sid">
+				<option value="1">SYSU</option>
+			</select>
+			<label for='telephone'>手机</label><input type='text' name='telephone' id='telephone'/>
+			<textarea name="selfIntroduction"></textarea>
 		</div>
 		<div id='template_u'>
 		</div>

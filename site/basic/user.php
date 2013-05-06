@@ -45,7 +45,7 @@
 				$password = $parameter['password'];
 				$password =encrypt_password( $password );
 
-				$query_str = "select uid from User where uname='$cname' and password='$password'";
+				$query_str = "select uid as id from User where uname='$cname' and password='$password'";
 				$result = $this->mysqli->query( $query_str );
 				$ret = $result->fetch_assoc();
 				if( !$ret ){

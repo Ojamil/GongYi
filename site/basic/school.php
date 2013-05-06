@@ -29,7 +29,7 @@ class School extends Actor
 		{
 			$sname = $parameter['sname'];
 			$password = encrypt_password( $parameter['password'] );
-			$query_str = "select sid from School where sname='$sname' and password='$password'";	
+			$query_str = "select sid as id from School where sname='$sname' and password='$password'";	
 			$result = $this->mysqli->query( $query_str );
 			if( $result ){
 				$ret = $result->fetch_assoc();
