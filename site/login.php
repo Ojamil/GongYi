@@ -10,7 +10,7 @@ if( !isset($_REQUEST['utype'] ) ) {
 }
 
 $operator = null;
-switch( $_REQUEST('utype') )
+switch( $_REQUEST['utype'] )
 {	
 case 'user':
 	$operator = new User();
@@ -20,7 +20,7 @@ case 'comity':
 	break;
 case 'school':
 	$operator = new School();
-	break:
+	break;
 default:
 	die('Illegal User Type');
 	break;
